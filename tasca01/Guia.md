@@ -1,86 +1,141 @@
-# Informe: Avaluació i Recomanació de Gestors de Contrasenyes
 
-**Per a:** Direcció Tècnica, Comitè de Crisi d'EverPia
-**De:** Equip de Becaris (Departament Tècnic)
-**Data:** 26 d'octubre de 2025
-**Assumpte:** Anàlisi i recomanació per a la implementació d'un gestor de contrasenyes corporatiu.
 
----
+# Guia d'Ús Tècnica: Bitwarden
 
-## 1. Introducció i Justificació
-
-El recent incident de seguretat (fuita d'informació) a EverPia, originat pel compromís d'un compte tècnic, subratlla una vulnerabilitat crítica en la nostra infraestructura: la gestió inadequada de credencials. La investigació apunta a l'ús d'una **contrasenya feble o reutilitzada** com a vector d'atac principal.
-
-### El Risc Crític de les Contrasenyes Febles i Reutilitzades
-
-Les pràctiques actuals suposen un risc inacceptable per a la integritat i confidencialitat de les nostres dades per dues raons principals:
-
-1.  **Contrasenyes Febles:** Les contrasenyes curtes, predictibles o basades en paraules comunes (p. ex., `EverPia2025!`) són extremadament vulnerables a **atacs de diccionari** i **atacs de força bruta**. Els ciberdelinqüents utilitzen programari automatitzat que pot provar milions de combinacions per segon, fent que aquestes contrasenyes siguin trivials de desxifrar.
-2.  **Contrasenyes Reutilitzades:** Aquest és el risc més greu en el context de les fuites de dades. Quan un empleat reutilitza la mateixa contrasenya per a múltiples serveis (interns i externs), una violació de seguretat en *qualsevol* d'aquests serveis externs (p. ex., una xarxa social, un fòrum) exposa les nostres credencials internes. Els atacants utilitzen aquesta informació en atacs de **credential stuffing**, provant sistemàticament les credencials filtrades contra els nostres sistemes (VPN, correu, servidors) fins a trobar una coincidència. L'incident recent és un exemple clar d'aquest escenari.
-
-### La Funció Crucial d'un Gestor de Contrasenyes
-
-Un gestor de contrasenyes mitiga directament aquests riscos. Actua com una **volta digital xifrada** on s'emmagatzemen totes les credencials de l'usuari. La seva funció és doble:
-
-* **Genera contrasenyes úniques i robustes:** Per a cada servei, l'eina crea una contrasenya llarga (p. ex., `kGj9!z$qR&3vL*8p#w@T`) que és impossible d'endevinar o de trencar amb atacs de diccionari.
-* **Emmagatzema i autocompleta:** L'usuari ja no necessita recordar centenars de contrasenyes complexes. Només ha de recordar una única **contrasenya mestra** per desbloquejar la volta.
-
-L'adopció d'un gestor de contrasenyes elimina la reutilització i assegura que cada punt d'accés a la nostra infraestructura estigui protegit per una credencial única i forta, trencant la cadena d'atac del *credential stuffing*.
+**Objectiu:** Aquesta guia operativa descriu el procés d'instal·lació, configuració i ús de Bitwarden, l'eina seleccionada per la Direcció Tècnica per gestionar les credencials del personal.
+**Audiència:** Personal Tècnic d'EverPia.
 
 ---
 
-## 2. Comparativa Tècnica: Bitwarden vs. KeePassXC
+## 1. Instal·lació i Configuració Inicial
 
-S'han avaluat dues de les solucions més respectades del mercat, que representen els dos models principals: **núvol (Bitwarden)** i **local/offline (KeePassXC)**.
+El nostre primer pas és crear el compte mestre, que serà la clau per a la vostra volta digital, i després instal·lar les eines necessàries.
 
-| Característica | Bitwarden (Model Núvol / Online) | KeePassXC (Model Local / Offline) |
-| :--- | :--- | :--- |
-| **Model de Seguretat** | **Xifratge End-to-End (E2EE)**. La volta es xifra localment (AES-256) amb la clau mestra abans de pujar al núvol. El proveïdor (Bitwarden) no té accés a les contrasenyes. | **Arxiu local xifrat (KDBX)**. L'usuari té control total sobre l'arxiu de la base de dades (AES-256). La seguretat depèn de la gestió d'aquest arxiu. |
-| **Sincronització** | **Automàtica i nativa**. Les dades es sincronitzen de forma transparent entre tots els dispositius (mòbil, escriptori, navegador) a través dels servidors de Bitwarden. | **Manual**. L'usuari és responsable de sincronitzar l'arxiu KDBX. Requereix l'ús de serveis de tercers (p. ex., OneDrive, Google Drive, Syncthing) o dispositius físics (USB). |
-| **Accés Multiplataforma**| Excel·lent. Clients natius per a Windows, macOS, Linux, iOS, Android, i extensions per a tots els navegadors principals. Accés web disponible. | Bo. Clients natius per a Windows, macOS i Linux. Aplicacions mòbils de tercers (compatibles amb KDBX) existeixen, però requereixen la sincronització manual de l'arxiu. |
-| **Dependència / Continuïtat**| Depèn dels servidors de Bitwarden per a la sincronització. Si el servei cau, l'accés es limita a la còpia local emmagatzemada a la memòria cau del dispositiu. | Totalment independent. Funciona sense connexió a Internet. No depèn de cap servei extern. L'únic punt de fallada és la pèrdua o corrupció de l'arxiu KDBX. |
-| **Model de Llicència i Cost**| **Freemium & Open Source**. La versió gratuïta és extremadament completa i suficient per a ús individual (sincronització il·limitada). Plans de pagament per a empreses amb funcions avançades. | Totalment Gratuït i Open Source (FOSS). Llicència GPL. Sense cap cost. |
-| **Portabilitat de Dades** | Es pot exportar la volta completa en formats estàndard (JSON, CSV). | Excel·lent. L'arxiu KDBX és un estàndard obert i es pot moure, copiar i utilitzar amb dotzenes d'aplicacions compatibles (KeePass, KeeWeb, etc.). |
+### 1.1. Creació del Compte Mestre
+
+La **Contrasenya Mestra** és la credencial més important que tindreu. És l'única contrasenya que heu de memoritzar.
+
+**ADVERTIMENT:** Si perdeu o oblideu la vostra Contrasenya Mestra, Bitwarden no la pot recuperar (política de coneixement zero) i perdreu l'accés a totes les vostres credencials. Assegureu-vos que sigui **robusta i memorable**.
+
+1.  Aneu al lloc web oficial de Bitwarden: [https://bitwarden.com](https://bitwarden.com)
+2.  Feu clic a "Inicia" o "Get Started" per crear un nou compte.
+3.  Empleneu el formulari. Introduïu el vostre correu electrònic corporatiu (`@everpia.com`).
+    
+4.  Creeu la vostra **Contrasenya Mestra**.
+5.  Afegiu una **Pista** (Hint) si ho considereu necessari, però assegureu-vos que la pista no sigui la contrasenya en si.
+    
+6.  Accepteu els termes i envieu el formulari.
+
+### 1.2. Instal·lació de l'Aplicació d'Escriptori
+
+L'aplicació d'escriptori us dona accés complet a la volta, fins i tot sense connexió.
+
+1.  Aneu a la pàgina de descàrregues: [https://bitwarden.com/download/](https://bitwarden.com/download/)
+2.  Descarregueu l'instal·lador per al vostre sistema operatiu (Windows, macOS o Linux).
+    
+3.  Instal·leu l'aplicació i inicieu sessió amb el vostre Compte Mestre.
+
+### 1.3. Instal·lació de l'Extensió del Navegador
+
+Aquesta és l'eina més important per a l'ús diari, ja que gestiona l'emplenament automàtic.
+
+1.  Obriu el vostre navegador principal (Chrome, Firefox, Edge, etc.).
+2.  Aneu a la botiga d'extensions del navegador (Chrome Web Store, Firefox Add-ons).
+3.  Cerqueu "Bitwarden" i afegiu l'extensió oficial.
+    
+4.  Un cop instal·lada, feu clic a la icona de Bitwarden a la barra d'eines i inicieu sessió.
+5.  (Recomanat) Fixeu la icona de l'extensió a la barra d'eines per a un accés ràpid.
 
 ---
 
-## 3. Avantatges i Inconvenients dels Models
+## 2. Generació de Contrasenyes Segures
 
-### Model Online / Núvol (Bitwarden)
+Una de les funcions principals és deixar de crear contrasenyes febles.
 
-* **Avantatges (Pros):**
-    * **Usabilitat Superior:** La sincronització automàtica és la característica clau. És transparent per a l'usuari i garanteix que totes les credencials estiguin disponibles a tots els dispositius (mòbil, portàtil, tauleta) en tot moment.
-    * **Fàcil Adopció:** La baixa fricció en l'ús diari és crucial per garantir que el personal realment utilitzi l'eina i no torni a pràctiques insegures.
-    * **Escalabilitat:** Permet una fàcil transició a un pla d'empresa, que ofereix gestió centralitzada, compartició segura de credencials d'equip (p. ex., claus API, servidors) i auditories.
-* **Inconvenients (Contres):**
-    * **Dependència de Tercers:** Encara que les dades estan xifrades E2EE ("zero-knowledge"), la volta resideix en servidors externs. Un atac als servidors de Bitwarden podria, tot i que improbable, exposar les voltes xifrades (no el contingut).
-    * **Requereix Connexió:** Necessita Internet per a la sincronització inicial i les actualitzacions.
-
-### Model Offline / Escriptori (KeePassXC)
-
-* **Avantatges (Pros):**
-    * **Control i Seguretat Màxims:** L'arxiu de la base de dades (KDBX) mai abandona el control de l'usuari tret que aquest ho decideixi. És la millor opció per a entorns "air-gapped" (desconnectats).
-    * **Independència Total:** No depèn de cap servei, subscripció o connexió a Internet. La continuïtat del negoci està garantida mentre l'usuari tingui l'arxiu.
-    * **Cost Zero:** És totalment gratuït.
-* **Inconvenients (Contres):**
-    * **Fricció en la Sincronització:** La gestió manual de la sincronització de l'arxiu KDBX és el seu principal inconvenient. És propens a errors humans: oblidar de sincronitzar, crear conflictes de versions o perdre l'arxiu.
-    * **Risc de Pèrdua:** Si un usuari perd l'única còpia del seu arxiu KDBX (o oblida la contrasenya mestra), totes les credencials es perden de forma irrecuperable. La gestió de còpies de seguretat recau totalment en l'usuari.
-    * **Usabilitat:** L'experiència en dispositius mòbils i l'autocompletat al navegador són generalment menys fluids que en les solucions al núvol.
+1.  Feu clic a la icona de l'extensió de Bitwarden al navegador.
+2.  Aneu a la pestanya **Generador**.
+3.  Ajusteu els paràmetres de la contrasenya. Per a comptes tècnics, es recomana:
+    * **Longitud:** Mínim 20 caràcters.
+    * **Tipus:** Contrasenya.
+    * **Caràcters:** Activeu les 4 opcions (Majúscules, Minúscules, Números i Caràcters especials).
+    
+4.  Feu clic a **Copiar** per utilitzar la contrasenya generada en un nou registre. L'eina també us permetrà autocompletar-la directament.
 
 ---
 
-## 4. Recomanació Final
+## 3. Exemples d'Ús i Emplenament Automàtic
 
-Després d'analitzar els requisits de seguretat, usabilitat i continuïtat del negoci per al personal tècnic d'EverPia, **recomanem l'adopció de Bitwarden com a gestor de contrasenyes estàndard**.
+### 3.1. Desar una Credencial d'un Servei Web (Automàtic)
 
-### Justificació de la Recomanació
+La forma més senzilla de desar una contrasenya és durant el registre a un nou servei.
 
-Encara que KeePassXC ofereix un control teòricament superior en ser offline, el seu principal inconvenient —la sincronització manual— esdevé un **risc operacional significatiu en un entorn d'equip**. El personal tècnic necessita accés fluid a les credencials des de múltiples dispositius (estacions de treball, portàtils, mòbils per a verificacions 2FA o accés d'emergència) sense haver de gestionar manualment un arxiu.
+1.  Aneu a la pàgina de registre del nou servei web.
+2.  Empleneu el vostre nom d'usuari.
+3.  En el camp de la contrasenya, utilitzeu el **Generador** (vegeu secció 2) per crear i emplenar una contrasenya segura.
+4.  En completar el registre i iniciar sessió, Bitwarden detectarà l'acció i mostrarà una barra a la part superior del navegador.
+5.  Feu clic a **Desa**. La credencial (usuari, contrasenya i URL) s'emmagatzemarà a la vostra volta.
 
-**Bitwarden** ofereix el millor equilibri:
+### 3.2. Desar una Credencial de Correu Electrònic (Manual)
 
-1.  **Seguretat Robusta:** El seu model de xifratge End-to-End (E2EE) de coneixement zero està provat i és l'estàndard de la indústria. Garanteix que només nosaltres podem accedir a les nostres dades.
-2.  **Adopció Garantida:** La facilitat d'ús i la sincronització transparent són crucials per assegurar que el 100% del personal tècnic adopti l'eina. Si una eina de seguretat és complicada, el personal buscarà maneres d'evitar-la.
-3.  **Preparat per al Futur:** Començar amb els plans gratuïts de Bitwarden ens permet moure'ns fàcilment a un pla "Teams" o "Enterprise" en el futur. Això permetrà a la Direcció Tècnica gestionar de forma centralitzada les polítiques de contrasenyes, compartir credencials sensibles (com les d'un servidor de producció) de forma segura i revocar l'accés a ex-empleats instantàniament.
+També podeu afegir credencials manualment, com ara el vostre compte de correu principal o un accés SSH.
 
+1.  Obriu l'extensió de Bitwarden o l'aplicació d'escriptori.
+2.  Feu clic al botó **+** (Afegir un element).
+    
+3.  Empleneu la informació:
+    * **Tipus:** Element d'inici de sessió.
+    * **Nom:** Un nom descriptiu (p. ex., "Correu EverPia (Google)").
+    * **Nom d'usuari:** El vostre correu (`nom.cognom@everpia.com`).
+    * **Contrasenya:** La vostra contrasenya actual.
+    * **URI 1:** La URL d'inici de sessió (p. ex., `https://accounts.google.com`). Això és clau perquè l'autocompletat funcioni.
+4.  Feu clic a **Desa**.
 
+### 3.3. Emplenament Automàtic (Autofill)
+
+Un cop desada, Bitwarden farà la feina per vosaltres.
+
+1.  Aneu a la pàgina d'inici de sessió d'un servei que ja teniu desat (p. ex., el correu de l'apartat 3.2).
+2.  La icona de Bitwarden a la barra d'eines mostrarà un número, indicant que té credencials per a aquest lloc.
+3.  Feu clic directament al camp d'usuari o contrasenya.
+4.  Apareixerà un petit menú de Bitwarden. Feu clic al nom del compte que voleu utilitzar.
+5.  Bitwarden emplenarà automàticament l'usuari i la contrasenya.
+6.  (Alternativa ràpida) També podeu utilitzar la drecera de teclat: **Ctrl+Shift+L** (o Cmd+Shift+L a macOS).
+
+---
+
+## 4. Gestió de Còpies de Seguretat (Backup)
+
+Tot i que Bitwarden és un servei al núvol, és una **política de seguretat obligatòria** mantenir una còpia de seguretat personal i xifrada de la vostra volta.
+
+### 4.1. Com Exportar la Volta
+
+La forma més segura d'exportar és des de l'**aplicació d'escriptori**.
+
+1.  Obriu l'aplicació d'escriptori de Bitwarden.
+2.  Assegureu-vos que la vostra volta està sincronitzada (normalment ho fa automàticament).
+3.  Aneu al menú superior: `Fitxer` > `Exportar Volta`.
+4.  Se us demanarà la vostra Contrasenya Mestra per confirmar l'operació.
+5.  Seleccioneu el format d'arxiu. **ATENCIÓ:**
+    * **`.json (xifrat)`:** AQUEST ÉS EL MÈTODE RECOMANAT. Genera un arxiu JSON que està protegit per la vostra Contrasenya Mestra.
+    * `.csv` o `.json` (sense xifrar): Aquests formats exporten les vostres contrasenyes en **text pla**. Són extremadament insegurs i només s'han d'utilitzar si sabeu què esteu fent (p. ex., per migrar a una altra eina en un entorn controlat).
+6.  Trieu `.json (xifrat)`, doneu-li un nom (p. ex., `bitwarden_export_AAAA-MM-DD.json`) i deseu-lo.
+
+### 4.2. Emmagatzematge Segur de la Còpia de Seguretat
+
+L'arxiu `json (xifrat)` que heu creat és la vostra línia de vida. Tracteu-lo amb la màxima cura.
+
+**Pràctiques Recomanades:**
+
+1.  **Clau USB Xifrada:**
+    * Desar l'arxiu exportat en un dispositiu USB.
+    * Aquest dispositiu USB ha d'estar **xifrat completament** (usant VeraCrypt, BitLocker To Go, o eines similars).
+    * Desar aquest USB en una ubicació física segura (p. ex., un calaix amb clau, diferent d'on guardeu el vostre portàtil).
+2.  **Emmagatzematge al Núvol Xifrat:**
+    * Com que hem exportat en format `json (xifrat)`, és relativament segur pujar aquest arxiu a un servei d'emmagatzematge al núvol (p. ex., el vostre Google Drive o OneDrive corporatiu).
+    * Per a una capa extra de seguretat, podeu comprimir l'arxiu `json (xifrat)` en un `.zip` protegit amb una contrasenya diferent abans de pujar-lo.
+
+**Què NO s'ha de fer:**
+
+* **NO** exportar en `.csv` (text pla) i desar-lo a l'escriptori.
+* **NO** enviar l'exportació per correu electrònic, ni tan sols a vosaltres mateixos.
+* **NO** desar la còpia de seguretat al mateix disc dur que el vostre sistema operatiu principal sense xifratge addicional.
