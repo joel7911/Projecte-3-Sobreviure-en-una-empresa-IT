@@ -139,3 +139,4 @@ L'arxiu `json (xifrat)` que heu creat és la vostra línia de vida. Tracteu-lo a
 * **NO** exportar en `.csv` (text pla) i desar-lo a l'escriptori.
 * **NO** enviar l'exportació per correu electrònic, ni tan sols a vosaltres mateixos.
 * **NO** desar la còpia de seguretat al mateix disc dur que el vostre sistema operatiu principal sense xifratge addicional.
+
