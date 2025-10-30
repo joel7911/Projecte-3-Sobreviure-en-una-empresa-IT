@@ -1,6 +1,3 @@
-```bash
-dig xtec.cat A
-```
 
 # T06: Fonaments del servei DNS
 
@@ -10,7 +7,9 @@ dig xtec.cat A
 
 **Comanda:**
 `dig xtec.cat A`
-
+```bash
+dig xtec.cat A
+```
 **Captura:**
 
 ---
@@ -18,16 +17,23 @@ dig xtec.cat A
 ### Comanda 2: Servidors de Noms NS
 
 **Comanda Executada:** `dig tecnocampus.cat NS`
-
+```bash
+dig tecnocampus.cat NS
+```
 **Anàlisi:** Llista explícita dels servidors de noms autoritatius per al domini tecnocampus.cat obtinguts del camp ANSWER SECTION.
 
 **Captura:**
+
+
 
 ---
 
 ### Comanda 3
 
 **Comanda Executada:** `dig escolapia.cat SOA`
+```bash
+dig escolapia.cat SOA
+```
 
 **Anàlisi:** Extracció del correu de l'administrador (recordant la conversió de l'arroba a punt) i el número de sèrie del domini (serial).
 
@@ -38,6 +44,7 @@ dig xtec.cat A
 ### Comanda 4: Resolució Inversa
 
 **Comanda Executada:** `dig -x 147.83.2.135`
+c
 
 **Anàlisi:** Quina informació s'ha obtingut sobre el registre PTR (resolució inversa) per a l'adreça IP especificada.
 
