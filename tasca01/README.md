@@ -41,6 +41,6 @@ El lliurament final requeria una estructura de fitxers organitzada al repositori
 * `informe.md`: Contingut de la Fase 1.
 * `guia.md`: Contingut de la Fase 2, amb referències a captures de pantalla a la carpeta `img/`.
 ---
-[Guia](Guia.md)
-[Informe](Informe.md)
-[Pagina principal](../README.md)
+- [Guia](Guia.md)
+- [Informe](Informe.md)
+- [Pagina principal](../README.md)
