@@ -48,6 +48,7 @@ dig escolapia.cat SOA
 
 **Comanda Executada:** `dig -x 147.83.2.135`
 
+<img width="643" height="410" alt="image" src="https://github.com/user-attachments/assets/5d78d4f8-556a-46d5-8632-048923702ed4" />
 
 
 **Anàlisi:** Quina informació s'ha obtingut sobre el registre PTR (resolució inversa) per a l'adreça IP especificada.
@@ -59,13 +60,17 @@ dig escolapia.cat SOA
 
 ### Comanda 1: Consulta No Autoritativa
 
-**Anàlisi:** Explicació de per què la resposta obtinguda és "No Autoritativa" (i quin servidor ha respost a la consulta).
+<img width="363" height="390" alt="image" src="https://github.com/user-attachments/assets/41fff857-8f33-430a-8b75-148a08f85752" />
 
-**Captura:**
+
+**Anàlisi:** Explicació de per què la resposta obtinguda és "No Autoritativa" (i quin servidor ha respost a la consulta).
 
 ---
 
 ### Comanda 2: Consulta Autoritativa
+
+<img width="545" height="706" alt="image" src="https://github.com/user-attachments/assets/660d0ce2-28ca-453f-8b43-a2b6d1130bba" />
+
 
 **Anàlisi:** Descripció de les diferències observades respecte a la Comanda 1 (especialment la presència o absència de l'etiqueta).
 
