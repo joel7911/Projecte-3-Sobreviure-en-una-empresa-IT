@@ -37,8 +37,7 @@ dig tecnocampus.cat NS
 dig escolapia.cat SOA
 ```
 
-**Anàlisi:** Quina informació s'ha obtingut sobre el registre PTR (resolució inversa) per a l'adreça IP especificada.
-
+<img width="637" height="426" alt="image" src="https://github.com/user-attachments/assets/694603e8-a0c0-4f11-aa83-da4adb9038f1" />
 
 
 **Anàlisi:** Extracció del correu de l'administrador (recordant la conversió de l'arroba a punt) i el número de sèrie del domini (serial).
