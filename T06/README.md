@@ -10,7 +10,8 @@
 ```bash
 dig xtec.cat A
 ```
-**Captura:**
+<img width="649" height="478" alt="image" src="https://github.com/user-attachments/assets/db72330f-510b-4d7f-936c-2cdea09f7bb2" />
+
 
 ---
 
