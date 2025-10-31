@@ -36,20 +36,22 @@ dig tecnocampus.cat NS
 dig escolapia.cat SOA
 ```
 
-**Anàlisi:** Extracció del correu de l'administrador (recordant la conversió de l'arroba a punt) i el número de sèrie del domini (serial).
+**Anàlisi:** Quina informació s'ha obtingut sobre el registre PTR (resolució inversa) per a l'adreça IP especificada.
 
-**Captura:**
+
+
+**Anàlisi:** Extracció del correu de l'administrador (recordant la conversió de l'arroba a punt) i el número de sèrie del domini (serial).
 
 ---
 
 ### Comanda 4: Resolució Inversa
 
 **Comanda Executada:** `dig -x 147.83.2.135`
-c
+
+
 
 **Anàlisi:** Quina informació s'ha obtingut sobre el registre PTR (resolució inversa) per a l'adreça IP especificada.
 
-**Captura:**
 
 ---
 
