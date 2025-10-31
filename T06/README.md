@@ -22,7 +22,8 @@ dig tecnocampus.cat NS
 ```
 **Anàlisi:** Llista explícita dels servidors de noms autoritatius per al domini tecnocampus.cat obtinguts del camp ANSWER SECTION.
 
-**Captura:**
+<img width="645" height="424" alt="image" src="https://github.com/user-attachments/assets/0290e6a3-39b6-46d1-b205-118c08fff229" />
+
 
 
 
