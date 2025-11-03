@@ -76,5 +76,4 @@ Anàlisi: La diferència principal respecte a la Comanda 1 és l'absència de l'
 ## 4. Resolució Local (mDNS)
 
 * **Comandes de Prova:** Les comandes que heu utilitzat per comprovar el funcionament de la resolució local (per exemple, `ping nom_altre_equip.local` o similar).
-* **Captura:** Imatge de la prova de resolució local.
 * **Anàlisi/Conclusions:** Explicació de si la prova ha funcionat, i una breu conclusió sobre la utilitat d'aquest mecanisme de resolució en entorns de xarxa sense servidor dedicat.
