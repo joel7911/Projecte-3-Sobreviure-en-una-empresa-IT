@@ -1,0 +1,18 @@
+# Implementació d'OpenLDAP (innovatechXX.test)
+
+Aquest repositori documenta la instal·lació, configuració i validació d'un servei OpenLDAP en un entorn virtualitzat basat en Ubuntu Server.
+
+---
+
+## Objectiu del Projecte
+
+L'objectiu principal d'aquest projecte és configurar un servei **OpenLDAP** perquè actuï com a **directori centralitzat d'usuaris i grups**.
+
+Tot el servei està muntat sobre un **Ubuntu Server** i està configurat per donar servei al domimini de proves `innovatechXX.test`.
+
+## Pila Tecnològica (Stack)
+
+* **Servei de Directori:** OpenLDAP (`slapd`)
+* **Sistema Operatiu:** Ubuntu Server
+* **Eines d'Administració:** `ldap-utils`, LDAP Account Manager (LAM)
+* **Integració de Client:** Ubuntu Desktop (via PAM i NSS)
