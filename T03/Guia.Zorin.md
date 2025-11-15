@@ -163,3 +163,9 @@ df -h
 
 
 Ara lvm_dades té més espai sense interrupcions.
+
+<p>
+  <a href="README.md">
+    <button style="padding:8px 16px; font-size:16px;">Tornar</button>
+  </a>
+</p>
