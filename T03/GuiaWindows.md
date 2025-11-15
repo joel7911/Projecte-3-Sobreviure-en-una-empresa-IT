@@ -103,3 +103,9 @@ L'objectiu és crear un grup d'emmagatzematge amb dos discos i, posteriorment, u
     - El disc estarà disponible per ser gestionat novament al sistema.
 
 <img width="375" height="361" alt="image" src="https://github.com/user-attachments/assets/ecfe0e42-bdb5-4de3-93e8-41bf63fe0a29" />
+
+<p>
+  <a href="README.md">
+    <button style="padding:8px 16px; font-size:16px;">Tornar</button>
+  </a>
+</p>
