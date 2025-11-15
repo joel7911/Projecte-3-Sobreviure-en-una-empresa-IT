@@ -56,3 +56,13 @@ S'utilitza **Windows 11** per configurar un pool d’emmagatzematge altament res
 
 #### **Gestió**
 - Visualització i gestió de l’estat del *Pool* i dels discos des de la consola de Windows.
+
+<p>
+  <a href="Guia.Zorin.md">
+    <button style="padding:8px 16px; font-size:16px;">Guia Zorin</button>
+  </a>
+
+  <a href="GuiaWindows.md">
+    <button style="padding:8px 16px; font-size:16px;">Guia Windows</button>
+  </a>
+</p>
