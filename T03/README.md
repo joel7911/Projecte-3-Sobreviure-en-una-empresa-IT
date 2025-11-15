@@ -61,8 +61,9 @@ S'utilitza **Windows 11** per configurar un pool d’emmagatzematge altament res
   <a href="Guia.Zorin.md">
     <button style="padding:8px 16px; font-size:16px;">Guia Zorin</button>
   </a>
+</p>
 
-
+<p>
   <a href="GuiaWindows.md">
     <button style="padding:8px 16px; font-size:16px;">Guia Windows</button>
   </a>
